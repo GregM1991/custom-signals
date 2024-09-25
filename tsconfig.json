@@ -10,6 +10,8 @@
 
     // Bundler mode
     "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
@@ -25,5 +27,6 @@
     "noPropertyAccessFromIndexSignature": false,
     "types": ["bun-types"]
   },
-  "include": ["*.ts", "*.d.ts"]
+  "include": ["*.ts", "*.d.ts", "src/client/app.ts", "src/server/server.ts"],
+  "exclude": ["node_modules", "dist"]
 }

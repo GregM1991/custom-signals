@@ -1,4 +1,4 @@
-# server-with-signals
+# custom-signals
 
 To install dependencies:
 
