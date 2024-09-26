@@ -88,8 +88,9 @@ async function handleFileChange(filename: string) {
       }
   }
 
+  const updateMessage = filename.endsWith('.css') ? 'css-update' : 'update';
   clients.forEach(client => {
-      client.controller.enqueue('data: update\n\n');
+    client.controller.enqueue(`data: ${updateMessage}\n\n`);
   });
 }
 

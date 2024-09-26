@@ -1,3 +1,4 @@
+import { registerButtonComponent } from './components/button/button';
 import Signal from './Signal'
 
 const count = new Signal(0);
@@ -35,6 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       count.set(count.get() - 2);
     });
   }
-
+  registerButtonComponent()
   updateDisplay();
 });

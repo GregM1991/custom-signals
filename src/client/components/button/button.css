@@ -1,0 +1,15 @@
+x-button {
+  display: grid;
+  place-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid blue;
+}
+
+x-button[size=lg] {
+  padding: 1rem 2rem;
+}
+
+x-button[variant=secondary] {
+  background-color: blue;
+  color: white;
+}
