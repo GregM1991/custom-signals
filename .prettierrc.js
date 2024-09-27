@@ -15,7 +15,7 @@ export default {
 	semi: false,
 	singleAttributePerLine: false,
 	singleQuote: true,
-	tabWidth: 2,
+	tabWidth: 1,
 	trailingComma: 'all',
 	useTabs: true,
 	overrides: [
@@ -26,5 +26,4 @@ export default {
 			},
 		},
 	],
-	plugins: ['prettier-plugin-svelte'],
 }

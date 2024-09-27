@@ -1,27 +1,42 @@
-class ButtonComponent extends HTMLElement {
-  connectedCallback() {
-    if (!this.querySelector('button')) {
-        this.append(document.createElement('button'));
-    }
-    this.update();
+class XButton extends HTMLElement {
+	private button: HTMLButtonElement
+
+	constructor() {
+		super()
+		this.button = document.createElement('button')
+		this.button.setAttribute('part', 'button')
+		while (this.firstChild) {
+			this.button.appendChild(this.firstChild)
+		}
+		this.appendChild(this.button)
+	}
+
+	connectedCallback() {
+		this.update()
+	}
+
+	static get observedAttributes() {
+		return ['size', 'variant', 'disabled']
+	}
+
+	attributeChangedCallback() {
+		this.update()
+	}
+
+	update() {
+		this.button.disabled = this.hasAttribute('disabled')
+
+		// Forward other relevant attributes
+		;['name', 'value', 'type'].forEach(attr => {
+			if (this.hasAttribute(attr)) {
+				this.button.setAttribute(attr, this.getAttribute(attr)!)
+			} else {
+				this.button.removeAttribute(attr)
+			}
+		})
+	}
 }
 
-  static get observedAttributes() {
-      return ['src', 'alt'];
-  }
-
-  attributeChangedCallback() {
-      this.update();
-  }
-
-  update() {
-      const button = this.querySelector('img');
-      if (button) {
-        button.innerText = 'Button!!!'
-      }
-  }
-}
-
-export const registerButtonComponent = () => {
-  customElements.define('x-button', ButtonComponent);
+export function registerButtonComponent() {
+	customElements.define('x-button', XButton)
 }

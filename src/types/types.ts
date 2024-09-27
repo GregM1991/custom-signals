@@ -1,4 +1,4 @@
 export type Client = {
-  id: number;
-  controller: ReadableStreamDefaultController;
-};
+	id: number
+	controller: ReadableStreamDefaultController
+}

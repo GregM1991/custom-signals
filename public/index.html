@@ -1,41 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Counter App with Custom Signals</title>
-</head>
-<body>
-    <h1>Counter App</h1>
-    <p>Count: <span id="count">0</span></p>
-    <button id="increment">Increment</button>
-    <button id="decrement">Decrement</button>
-    <x-button></x-button>
-    <x-button size="lg" variant="secondary"></x-button>
-    <script>
-        // Hot reloading setup
-        if ('EventSource' in window) {
-            const eventSource = new EventSource('/hot-reload');
-            eventSource.onmessage = () => location.reload();
-        }
-        if ('EventSource' in window) {
-            const eventSource = new EventSource('/hot-reload');
-            eventSource.onmessage = (e) => {
-                if (e.data === 'css-update') {
-                const links = document.getElementsByTagName('link');
-                for (let i = 0; i < links.length; i++) {
-                    const link = links[i];
-                    if (link.rel === 'stylesheet') {
-                    link.href = link.href.split('?')[0] + '?v=' + new Date().getTime();
-                    }
-                }
-                } else {
-                location.reload();
-                }
-            };
-        }
-    </script>
-    <script src="/app.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="index.css" />
+		<title>Counter App with Custom Signals</title>
+	</head>
+	<body>
+		<div class="card">
+			<h1>Counter App</h1>
+			<p>Count: <span id="count">0</span></p>
+			<div class="button-wrapper">
+				<x-button id="increment">Increment</x-button>
+				<x-button id="decrement" variant="danger">Decrement</x-button>
+			</div>
+		</div>
+		<script>
+			// Hot reloading setup
+			if ('EventSource' in window) {
+				const eventSource = new EventSource('/hot-reload')
+				eventSource.onmessage = () => location.reload()
+			}
+			if ('EventSource' in window) {
+				const eventSource = new EventSource('/hot-reload')
+				eventSource.onmessage = e => {
+					if (e.data === 'css-update') {
+						const links = document.getElementsByTagName('link')
+						for (let i = 0; i < links.length; i++) {
+							const link = links[i]
+							if (link.rel === 'stylesheet') {
+								link.href = link.href.split('?')[0] + '?v=' + new Date().getTime()
+							}
+						}
+					} else {
+						location.reload()
+					}
+				}
+			}
+		</script>
+		<script src="/app.js"></script>
+	</body>
 </html>

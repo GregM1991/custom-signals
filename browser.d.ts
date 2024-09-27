@@ -1,6 +1,6 @@
 interface Window {
-  appInitialized?: boolean;
+	appInitialized?: boolean
 }
 
-declare var window: Window;
-declare var document: Document;
+declare var window: Window
+declare var document: Document

@@ -1,1 +1,2 @@
-@import url("./components/button/button.css");
+@import url('../src/client/styles/app.css');
+@import url('../src/client/components/button/button.css');
